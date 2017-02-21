@@ -28,7 +28,7 @@ module Metagame
 
       #From the project we take the related badges
       badges = player_record.project.badges.by_type(player_record.type)
-        .less_points_than(player_record.value)
+        .less_or_equal_points_than(player_record.value)
 
       #Check if the player has the badges with the difference of both sets.
       badges = badges - player_record.player.badges
@@ -38,9 +38,9 @@ module Metagame
     #Promotes rank to one player
     def self.give_deserved_promotion(player)
       new_rank = PlayerRank.where("value <= #{player.badges.count}").order("value ASC").last
-      if player.rank.nil? || new_range.value > player.player_range.value
+      if player.rank.nil? || new_rank.value > player.rank.value
 
-        player.player_range = new_range
+        player.rank = new_rank
         player.save!
       end
 

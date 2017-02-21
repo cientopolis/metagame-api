@@ -12,5 +12,12 @@ class PlayerRecord < ActiveRecord::Base
     return self
   end
 
+  def update_values(new_value)
+    self.last_value = self.value
+    self.value = self.value + new_value
+    self.save!
+    return self
+  end
+
 
 end

@@ -23,15 +23,14 @@ class Player < ActiveRecord::Base
      #Find
      player_record = self.player_records
      .detect{|pr| pr.project == activity.project && pr.type == activity.type }
-     #Create
+     # We didn't find any PlayerRecord so we create a new one !
      if player_record.nil?
         player_record = PlayerRecord.new
         self.player_records << player_record.new_from_activity(activity)
      end
-     #Update counts
-     player_record.value = player_record.value + activity.count
-     player_record.save!
-     player_record
+
+     #Update player_record values
+     player_record.update_values(activity.count.to_i)
     end
 
   end
