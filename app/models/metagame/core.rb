@@ -22,10 +22,23 @@ module Metagame
     end
 
   private
-    def self.give_deserved_promotion(player)
 
-      new_range = PlayerRank.where("value <= #{player.badges.count}").order("value ASC").last
-      if player.player_range.nil? || new_range.value > player.player_range.value
+    #Selects the badges related with the project.
+    def self.deserved_badges(player_record)
+
+      #From the project we take the related badges
+      badges = player_record.project.badges.by_type(player_record.type)
+        .less_points_than(player_record.value)
+
+      #Check if the player has the badges with the difference of both sets.
+      badges = badges - player_record.player.badges
+      return badges
+    end
+
+    #Promotes rank to one player
+    def self.give_deserved_promotion(player)
+      new_rank = PlayerRank.where("value <= #{player.badges.count}").order("value ASC").last
+      if player.rank.nil? || new_range.value > player.player_range.value
 
         player.player_range = new_range
         player.save!
@@ -33,19 +46,6 @@ module Metagame
 
     end
 
-    #Selects the badges related with the project.
-    def self.deserved_badges(player_record)
-
-      new_points = player_record.value
-      ty_id = player_record.type_id
-      player = player_record.player
-      project = player_record.project
-      #All the badges from project with the condition
-      badges = project.badges.where(" points <= #{new_points} && points > 0 && type_id = #{ty_id}") || []
-      #Check if the player has the badges with the difference of both sets.
-      badges = badges - player.badges
-      badges
-    end
 
   end
 end

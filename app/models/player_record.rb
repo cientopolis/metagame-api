@@ -3,12 +3,13 @@ class PlayerRecord < ActiveRecord::Base
   belongs_to :project
   belongs_to :type, :class_name => "ActivityType", :foreign_key => :activity_type_id
 
-  def create_player_record(activity,player)
+  def new_from_activity(activity)
     #Returns a new Player record
     self.project = activity.project
     self.type = activity.type
-    self.player = player
+    self.player = activity.player
     self.save!
+    return self
   end
 
 

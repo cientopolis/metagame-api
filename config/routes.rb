@@ -6,6 +6,6 @@ Rails.application.routes.draw do
   resources :types, except: [:new, :edit]
   resources :badges, except: [:new, :edit]
 
-  get '/activities' => "activity#activity"
+  get '/activities' => "activities#record_activity"
 
 end

@@ -1,8 +1,8 @@
-class ActivityController < ApplicationController
+class ActivitiesController < ApplicationController
 
-  before_action :create_activity, only: :activity
+  before_action :create_activity, only: :record_activity
 
-  def process_activity
+  def record_activity
     Metagame::Core.issue_deserved_badges(@player_record)
     render json: @player_record
   end
@@ -23,7 +23,7 @@ class ActivityController < ApplicationController
 
   #Creates an object activity from JSON logs
   def create_activity
-    @player  = find_or_create_player(req_params[:email])
+    player  = find_or_create_player(req_params[:email])
     project = Project.find_by(name:req_params[:project])
     type    = ActivityType.find_by(name:req_params[:event])
     activity = Activity.new(player,project,type,(req_params[:count] || 1))
