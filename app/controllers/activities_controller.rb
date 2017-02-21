@@ -27,8 +27,14 @@ class ActivitiesController < ApplicationController
     project = Project.find_by(name:req_params[:project])
     type    = ActivityType.find_by(name:req_params[:event])
     activity = Activity.new(player,project,type,(req_params[:count] || 1))
-    @player_record = player.record_activity(activity)
-    player.save!
+
+    if activity.project && activity.type
+      @player_record = player.record_activity(activity)
+      player.save!
+    else
+      raise "Project name or type invalid"
+    end
+
   end
 
   #Find or create player
