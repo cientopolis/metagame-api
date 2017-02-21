@@ -7,18 +7,11 @@ class ActivitiesController < ApplicationController
     render json: @player_record
   end
 
-  def contribution
-
-  end
-
-  def reinforcement
-
-  end
 
   private
 
   def req_params
-    params.permit!
+    params.permit(:email,:project,:event,:count)
   end
 
   #Creates an object activity from JSON logs
@@ -41,7 +34,6 @@ class ActivitiesController < ApplicationController
   def find_or_create_player(email)
     Player.find_by(email:email) || Player.create(email:email)
   end
-
 
 
 end

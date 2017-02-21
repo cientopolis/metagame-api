@@ -1,17 +1,26 @@
 source 'https://rubygems.org'
 
-
 gem 'rails', '4.2.5'
 
 gem 'rails-api'
 
 gem 'spring', :group => :development
 
-
 gem 'mysql2'
 
+group :development, :test do
+  gem 'pry'
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+end
 
-gem 'pry', :group => :development
+group :test do
+  gem 'faker'       # Gem to generate mock data
+  gem 'capybara'    # Part of the test suite
+  gem 'guard-rspec'
+  gem 'launchy'
+end
+
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

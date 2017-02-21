@@ -25,5 +25,17 @@ module MetagameApi
     # Do not swallow errors in after_commit/after_rollback callbacks.
 
     config.active_record.raise_in_transactional_callbacks = true
+
+    #Rspec configs
+    config.generators do |g|
+      g.test_framework :rspec,
+        :fixtures => true,        # generate a fixture for each model
+        :view_specs => false,     # Skip generating view specs.
+        :helper_specs => false,   # Skips generating specs for the helper files Rails generates with each controller
+        :routing_specs => false,  # Omits a spec file for your config/routes.rb
+        :controller_specs => true,
+        :request_specs => true
+      g.fixture_replacement :factory_girl, :dir => "spec/factories" # Generate factories instead of fixtures
+    end
   end
 end
