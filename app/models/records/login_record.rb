@@ -1,0 +1,3 @@
+class LoginRecord < ActivityRecord
+
+end

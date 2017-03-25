@@ -1,0 +1,3 @@
+class ProlificCitizenScientist < SpecializedScientist
+
+end

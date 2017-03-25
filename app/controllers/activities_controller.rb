@@ -3,10 +3,15 @@ class ActivitiesController < ApplicationController
   before_action :create_activity, only: :record_activity
 
   def record_activity
-    Metagame::Core.issue_deserved_badges(@player_record)
-    render json: @player_record
-  end
 
+    if @activity && @activity.project
+      @player_record = @activity.player.record_activity(@activity)
+      #@player.save!
+    else
+      raise "Project name or event type invalid"
+    end
+
+  end
 
   private
 
@@ -18,15 +23,7 @@ class ActivitiesController < ApplicationController
   def create_activity
     player  = find_or_create_player(req_params[:email])
     project = Project.find_by(name:req_params[:project])
-    type    = ActivityType.find_by(name:req_params[:event])
-    activity = Activity.new(player,project,type,(req_params[:count] || 1))
-
-    if activity.project && activity.type
-      @player_record = player.record_activity(activity)
-      player.save!
-    else
-      raise "Project name or type invalid"
-    end
+    @activity = Activity.get_activity_type(player,req_params[:event],project)
 
   end
 

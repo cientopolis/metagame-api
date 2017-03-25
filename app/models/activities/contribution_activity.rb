@@ -1,0 +1,3 @@
+class ContributionActivity < Activity
+
+end

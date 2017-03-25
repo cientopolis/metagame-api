@@ -8,6 +8,8 @@ gem 'spring', :group => :development
 
 gem 'mysql2'
 
+gem 'figaro'
+
 group :development, :test do
   gem 'pry'
   gem 'rspec-rails'

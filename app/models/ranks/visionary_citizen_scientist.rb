@@ -1,0 +1,3 @@
+class VisionaryCitizenScientist < SpecializedScientist
+
+end

@@ -1,0 +1,3 @@
+class DisseminationActivity < Activity
+
+end

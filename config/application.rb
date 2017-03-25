@@ -20,6 +20,11 @@ module MetagameApi
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
     config.autoload_paths << Rails.root.join("app/query")
+    config.autoload_paths << Rails.root.join("app/models/activities")
+    config.autoload_paths << Rails.root.join("app/models/profiles")
+    config.autoload_paths << Rails.root.join("app/models/ranks")
+    config.autoload_paths << Rails.root.join("app/models/records")
+
     #config.autoload_paths << Rails.root.join("app/metagame")
 
     # Do not swallow errors in after_commit/after_rollback callbacks.

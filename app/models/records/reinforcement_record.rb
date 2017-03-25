@@ -1,0 +1,3 @@
+class ReinforcementRecord < ActivityRecord
+
+end

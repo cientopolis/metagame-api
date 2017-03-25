@@ -1,0 +1,3 @@
+class ContributionRecord < ActivityRecord
+
+end

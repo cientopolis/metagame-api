@@ -1,0 +1,3 @@
+class ReinforcementActivity < Activity
+
+end

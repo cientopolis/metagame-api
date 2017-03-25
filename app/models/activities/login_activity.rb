@@ -1,0 +1,3 @@
+class LoginActivity < Activity
+
+end

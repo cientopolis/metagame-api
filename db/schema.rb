@@ -11,22 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170214195110) do
+ActiveRecord::Schema.define(version: 20170323031123) do
 
-  create_table "activity_types", force: :cascade do |t|
-    t.string   "name",       limit: 255, null: false
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+  create_table "activity_records", force: :cascade do |t|
+    t.integer "value",            limit: 4,   default: 0, null: false
+    t.integer "last_value",       limit: 4,   default: 0
+    t.string  "type",             limit: 255
+    t.integer "player_record_id", limit: 4
   end
 
   create_table "badges", force: :cascade do |t|
-    t.string   "name",             limit: 255,               null: false
-    t.integer  "points",           limit: 4,     default: 0
-    t.text     "description",      limit: 65535
-    t.integer  "project_id",       limit: 4,                 null: false
-    t.integer  "activity_type_id", limit: 4,                 null: false
-    t.datetime "created_at",                                 null: false
-    t.datetime "updated_at",                                 null: false
+    t.string   "name",        limit: 255,               null: false
+    t.integer  "points",      limit: 4,     default: 0
+    t.text     "description", limit: 65535
+    t.integer  "project_id",  limit: 4,                 null: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
   end
 
   create_table "levels", force: :cascade do |t|
@@ -37,27 +37,22 @@ ActiveRecord::Schema.define(version: 20170214195110) do
   end
 
   create_table "player_ranks", force: :cascade do |t|
-    t.string   "name",       limit: 255, null: false
-    t.integer  "value",      limit: 4,   null: false
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.string "name", limit: 255
+    t.string "type", limit: 255
   end
 
   create_table "player_records", force: :cascade do |t|
-    t.integer  "value",            limit: 4, default: 0, null: false
-    t.integer  "last_value",       limit: 4, default: 0
-    t.integer  "player_id",        limit: 4,             null: false
-    t.integer  "project_id",       limit: 4,             null: false
-    t.integer  "activity_type_id", limit: 4,             null: false
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
+    t.integer  "player_id",  limit: 4, null: false
+    t.integer  "project_id", limit: 4, null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
   end
 
   create_table "players", force: :cascade do |t|
     t.string   "email",          limit: 255, null: false
-    t.integer  "player_rank_id", limit: 4
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
+    t.integer  "player_rank_id", limit: 4
   end
 
   create_table "projects", force: :cascade do |t|

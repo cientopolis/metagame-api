@@ -6,7 +6,6 @@ class CreateBadges < ActiveRecord::Migration
       t.text :description
 
       t.belongs_to :project,  null: false
-      t.belongs_to :activity_type,  null: false
       t.timestamps null: false
     end
   end

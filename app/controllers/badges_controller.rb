@@ -55,15 +55,12 @@ class BadgesController < ApplicationController
     end
 
     def req_params
-      params.permit(:name,:project,:type)
+      params.permit(:name,:project)
     end
 
     def new_badge
-      type = ActivityType.find_by(name:req_params[:type])
       project = Project.find_by(name:req_params[:project])
-
       @new_badge = Badge.new(badge_params)
-      @new_badge.activity_type = type if type
       @new_badge.project = project if project
 
     end
