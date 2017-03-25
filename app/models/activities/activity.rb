@@ -3,27 +3,24 @@ class Activity
   attr_accessor :player,:project,:type,:count
 
   TYPES = {
-    login: LoginActivity.new(),
-    contribution: ContributionActivity.new(),
-    reinforcement: ReinforcementActivity.new(),
-    dissemination: DisseminationActivity.new()
+    login: LoginActivity,
+    contribution: ContributionActivity,
+    reinforcement: ReinforcementActivity,
+    dissemination: DisseminationActivity
   }
 
-  def initialize(player=nil,type=nil,project=nil,count=1)
-    @player = player
-    @project = project
-    @type = type
-    @count = count
+  def initialize(args={})
+    @player = args[:player]
+    @project = args[:project]
+    @type = args[:type]
+    @count = args[:count] || 1
   end
 
-  def self.get_activity_type(player,type,project)
+  def self.get_activity_type(player,type,project,count)
     new_act = TYPES[type.to_sym]
     if new_act
-      new_act.player = player
-      new_act.project = project
-      new_act.type = type
+      new_act = new_act.new(player:player,type:type,project:project,count:count)
     end
-    new_act
   end
 
 end

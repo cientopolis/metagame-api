@@ -4,32 +4,27 @@ class PlayerRecord < ActiveRecord::Base
 
   has_one :login_record, class_name: "LoginRecord"
   has_one :contribution_record, class_name: "ContributionRecord"
-  has_one :dissemination_record, class_name: "DisseminationRecord"
   has_one :reinforcement_record, class_name: "ReinforcementRecord"
+  has_one :dissemination_record, class_name: "DisseminationRecord"
 
-  def initialize
-    self.login_record = LoginRecord.new
-    self.contribution_record = ContributionRecord.new
-    self.dissemination_record = DisseminationRecord.new
-    self.reinforcement_record = ReinforcementRecord.new
+  #Initialize Records
+  after_create :initialize_records
+
+  def initialize_records
+    self.create_login_record
+    self.create_contribution_record
+    self.create_reinforcement_record
+    self.create_dissemination_record
   end
 
 
-  def new_from_activity(activity)
-    #Returns a new Player record
-    self.project = activity.project
-    self.type = activity.type
-    self.player = activity.player
-    self.save!
-    return self
-  end
+  def record_on(activity)
+    #Double dispatching
+    activity.record_on(self.login_record)
+    activity.record_on(self.contribution_record)
+    activity.record_on(self.dissemination_record)
+    activity.record_on(self.reinforcement_record)
 
-  def update_values(new_value)
-    self.last_value = self.value
-    self.value = self.value + new_value
-    self.save!
-    return self
   end
-
 
 end

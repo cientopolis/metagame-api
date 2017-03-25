@@ -14,7 +14,7 @@
 ActiveRecord::Schema.define(version: 20170323031123) do
 
   create_table "activity_records", force: :cascade do |t|
-    t.integer "value",            limit: 4,   default: 0, null: false
+    t.integer "value",            limit: 4,   default: 0
     t.integer "last_value",       limit: 4,   default: 0
     t.string  "type",             limit: 255
     t.integer "player_record_id", limit: 4

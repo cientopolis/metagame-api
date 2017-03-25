@@ -34,20 +34,29 @@ class Player < ActiveRecord::Base
   end
 
   def record_activity(activity)
+    #Find by project
+    player_record = find_or_create_record_for(activity)
+    player_record.record_on(activity)
+    player_record
+  end
 
-    binding.pry
+  def find_or_create_record_for(activity)
+    player_record = find_record_for(activity.project)
+   # We didn't find any PlayerRecord so we create a new one !
+   if player_record.nil?
+    player_record = add_player_record(activity)
+   end
+   player_record
+  end
 
-   # #Find
-   # player_record = self.player_records
-   # .detect{|pr| pr.project == activity.project }
-   # # We didn't find any PlayerRecord so we create a new one !
-   # if player_record.nil?
-   #    player_record = PlayerRecord.new
-   #    self.player_records << player_record.new_from_activity(activity)
-   # end
-   # #Update player_record values
-   # player_record.update_values(activity.count.to_i)
+  def add_player_record(activity)
+    player_record = PlayerRecord.create(project:activity.project,player:activity.player)
+    self.player_records << player_record
+    player_record
+  end
 
+  def find_record_for(project)
+    self.player_records.detect{|pr| pr.project == project }
   end
 
 end

@@ -9,4 +9,20 @@ class ActivityRecord < ActiveRecord::Base
 
   self.inheritance_column = :type
 
+  def record_login(activity)
+    #Do nothing
+  end
+
+  def record_contribution(activity)
+    #Do nothing
+  end
+
+  def record_reinforcement(activity)
+    #Do nothing
+  end
+
+  def record_dissemination(activity)
+    #Do nothing
+  end
+
 end
