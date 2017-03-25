@@ -25,4 +25,10 @@ class ActivityRecord < ActiveRecord::Base
     #Do nothing
   end
 
+  def update_values(count)
+    self.last_value = self.value
+    self.value = self.value + count.to_i
+    self.save
+  end
+
 end
