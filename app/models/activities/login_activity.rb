@@ -5,4 +5,5 @@ class LoginActivity < Activity
     record.record_login(self)
   end
 
+
 end

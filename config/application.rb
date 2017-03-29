@@ -26,11 +26,13 @@ module MetagameApi
     config.autoload_paths << Rails.root.join("app/models/records")
 
     #config.autoload_paths << Rails.root.join("app/metagame")
+#    config.active_record.observers = :badge_judge
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
+    #We populate database
+    #.application.load_seed
 
     config.active_record.raise_in_transactional_callbacks = true
-
     #Rspec configs
     config.generators do |g|
       g.test_framework :rspec,

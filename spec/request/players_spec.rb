@@ -1,22 +1,25 @@
 require 'rails_helper'
 
-describe "Players", type: :request do
+describe "Players Requests", type: :request do
   it  'creates a player' do
 
   end
 
   it 'list players' do
+
+    previous_length = Player.count
+
     FactoryGirl.create_list(:player, 10)
 
     get '/players'
 
-    json = JSON.parse(response.body)
-
     # test for the 200 status-code
     expect(response).to be_success
 
-    #Test the JSON response
-    expect(json.length).to eq(10)
+    json = JSON.parse(response.body)
+
+     #Test the JSON response
+    expect(json.length).to eq(10+previous_length)
   end
 
   it 'updates a player' do

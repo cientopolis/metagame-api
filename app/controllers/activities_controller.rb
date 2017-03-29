@@ -6,7 +6,7 @@ class ActivitiesController < ApplicationController
 
     if @activity && @activity.project
       player_record = @activity.player.record_activity(@activity)
-      binding.pry
+      @activity.player.save!
     else
       raise "Project name or event type invalid"
     end
@@ -21,17 +21,12 @@ class ActivitiesController < ApplicationController
 
   #Creates an object activity from JSON logs
   def create_activity
-    player  = find_or_create_player(req_params[:email])
+    player  = Player.find_or_create_by(email:req_params[:email])
     project = Project.find_by(name:req_params[:project])
     event = req_params[:event]
     count = req_params[:count]
     @activity = Activity.get_activity_type(player,event,project,count)
 
-  end
-
-  #Find or create player
-  def find_or_create_player(email)
-    Player.find_by(email:email) || Player.create(email:email)
   end
 
 

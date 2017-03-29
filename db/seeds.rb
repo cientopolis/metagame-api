@@ -14,29 +14,34 @@ galaxy_conqueror = Project.create(name:"galaxy-conqueror")
 
 #Badges
 
-#Contribution badge
-cont_badge = Badge.create(name:"First contribution",points:2,project_id:galaxy_conqueror.id)
+#Tutorial badges
+Badge.create(name:"i-was-here",project_id:galaxy_conqueror.id,points:1,badge_type:"login")
+Badge.create(name:"welcome-back",project_id:galaxy_conqueror.id,points:2,badge_type:"login")
 
-cont_badge_2 = Badge.create(name:"2 contribution",points:4,project_id:galaxy_conqueror.id)
+#Unit of Work badges
+cont_badge = Badge.create(name:"First contribution",points:2,project_id:galaxy_conqueror.id,badge_type:"contribution")
 
-cont_badge_3 = Badge.create(name:"3 contribution",points:8,project_id:galaxy_conqueror.id)
+cont_badge_2 = Badge.create(name:"2 contribution",points:4,project_id:galaxy_conqueror.id,badge_type:"contribution")
 
-cont_badge_4 = Badge.create(name:"4 contribution",points:10,project_id:galaxy_conqueror.id)
+cont_badge_3 = Badge.create(name:"3 contribution",points:8,project_id:galaxy_conqueror.id,badge_type:"contribution")
+
+cont_badge_4 = Badge.create(name:"4 contribution",points:10,project_id:galaxy_conqueror.id,badge_type:"contribution")
 
 
 #Reinforcement badge
-cont_badge = Badge.create(name:"First reinforcement",points:10,project_id:galaxy_conqueror.id)
+cont_badge = Badge.create(name:"First reinforcement",points:10,project_id:galaxy_conqueror.id,badge_type:"reinforcement")
 
-cont_badge = Badge.create(name:"2 reinforcement",points:30,project_id:galaxy_conqueror.id)
+cont_badge = Badge.create(name:"2 reinforcement",points:30,project_id:galaxy_conqueror.id,badge_type:"reinforcement")
 
-cont_badge = Badge.create(name:"3 reinforcement",points:50,project_id:galaxy_conqueror.id)
+cont_badge = Badge.create(name:"3 reinforcement",points:50,project_id:galaxy_conqueror.id,badge_type:"reinforcement")
 
-#Social badge
+#Dissemination badges
 
-social_badge = Badge.create(name:"Share on Fb",project_id:galaxy_conqueror.id)
+social_badge = Badge.create(name:"Share on Fb",project_id:galaxy_conqueror.id,badge_type:"dissemination")
 
 
-#Ranges
+
+#Ranks
 
 range = PlayerRank.create(name:"Visitor",type:"Visitor")
 range = PlayerRank.create(name:"Explorer",type:"Explorer")

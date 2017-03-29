@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20170323031123) do
     t.string   "name",        limit: 255,               null: false
     t.integer  "points",      limit: 4,     default: 0
     t.text     "description", limit: 65535
+    t.string   "badge_type",  limit: 255
     t.integer  "project_id",  limit: 4,                 null: false
     t.datetime "created_at",                            null: false
     t.datetime "updated_at",                            null: false
@@ -52,6 +53,7 @@ ActiveRecord::Schema.define(version: 20170323031123) do
     t.string   "email",          limit: 255, null: false
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
+    t.datetime "promoted_on"
     t.integer  "player_rank_id", limit: 4
   end
 

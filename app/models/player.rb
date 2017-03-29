@@ -4,19 +4,27 @@ class Player < ActiveRecord::Base
   has_many   :levels
   has_many   :badges, :through => :levels
   has_many   :player_records, class_name:"PlayerRecord"
-
-  belongs_to :rank, class_name: "PlayerRank", :foreign_key => "player_rank_id", autosave: true
+  belongs_to :rank, class_name: "PlayerRank", :foreign_key => "player_rank_id"
 
   #Validations
   validates :email, :presence => true
 
-  def initialize(args=nil)
+  include Subject
+
+  def initialize(args={})
     super(args)
     self.rank = PlayerRank.visitor
   end
 
+  def promote_rank(new_rank)
+    self.rank = new_rank
+    self.promoted_on = DateTime.now
+  end
+
   def add_badge(badge)
     self.badges << badge
+    #We apply the strategy pattern to check a new rank
+    self.rank.reevaluate_rank(self)
   end
 
   def remove_badge(badge)
@@ -33,10 +41,22 @@ class Player < ActiveRecord::Base
     (_badges - self.badges).empty?
   end
 
+  def has_badge_of_type?(type)
+    self.badges.any?{ |b| b.badge_type == type }
+  end
+
+  def badges_issued_after(date)
+    issued = self.levels.select{|l| l.created_at >= date }
+    issued.map{ |i| Badge.find(i.badge_id) }
+  end
+
   def record_activity(activity)
     #Find by project
     player_record = find_or_create_record_for(activity)
+    #Record on activity record
     player_record.record_on(activity)
+    #Notify observers of the change
+    notify_observers(activity:activity)
     player_record
   end
 
