@@ -1,6 +1,6 @@
-class CreateLevels < ActiveRecord::Migration
+class CreateIssues < ActiveRecord::Migration
   def change
-    create_table :levels do |t|
+    create_table :issues do |t|
       t.belongs_to :player, null: false
       t.belongs_to :badge,  null: false
       t.timestamps null: false

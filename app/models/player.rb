@@ -1,8 +1,8 @@
 class Player < ActiveRecord::Base
 
   #Relationships
-  has_many   :levels
-  has_many   :badges, :through => :levels
+  has_many   :issues
+  has_many   :badges, :through => :issues
   has_many   :player_records, class_name:"PlayerRecord"
   belongs_to :rank, class_name: "PlayerRank", :foreign_key => "player_rank_id"
 
@@ -46,8 +46,12 @@ class Player < ActiveRecord::Base
   end
 
   def badges_issued_after(date)
-    issued = self.levels.select{|l| l.created_at >= date }
+    issued = self.issues.select{|l| l.created_at >= date}
     issued.map{ |i| Badge.find(i.badge_id) }
+  end
+
+  def last_activity
+    self.issues.last.created_at
   end
 
   def record_activity(activity)

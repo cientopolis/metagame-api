@@ -6,7 +6,7 @@ class Badge < ActiveRecord::Base
   scope :more_or_equal_points_than, ->(points){ with_points.where("points >= ?", points) }
 
   #Relationships
-  has_many :levels
+  has_many :issues
   belongs_to :project
 
 end

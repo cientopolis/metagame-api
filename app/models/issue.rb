@@ -1,4 +1,4 @@
-class Level < ActiveRecord::Base
+class Issue < ActiveRecord::Base
 
   #Scopes
   scope :issued_before,->(date){where "created_at <= ?",date}

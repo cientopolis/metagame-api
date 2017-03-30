@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20170323031123) do
     t.datetime "updated_at",                            null: false
   end
 
-  create_table "levels", force: :cascade do |t|
+  create_table "issues", force: :cascade do |t|
     t.integer  "player_id",  limit: 4, null: false
     t.integer  "badge_id",   limit: 4, null: false
     t.datetime "created_at",           null: false
