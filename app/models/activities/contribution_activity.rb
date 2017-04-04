@@ -5,4 +5,8 @@ class ContributionActivity < Activity
     record.record_contribution(self)
   end
 
+  def get_record(record)
+    record.contribution_record
+  end
+
 end

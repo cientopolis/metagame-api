@@ -5,4 +5,8 @@ class DisseminationActivity < Activity
     record.record_dissemination(self)
   end
 
+  def get_record(record)
+    record.dissemination_record
+  end
+
 end

@@ -60,7 +60,7 @@ class Player < ActiveRecord::Base
     #Record on activity record
     player_record.record_on(activity)
     #Notify observers of the change
-    notify_observers(activity:activity)
+    notify_observers(activity,player_record)
     player_record
   end
 

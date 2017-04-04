@@ -3,7 +3,8 @@ class PlayersController < ApplicationController
   # GET /players
   # GET /players.json
   def index
-    render json: PlayerQuery.new.result(player_params)
+    query = PlayerQuery.new
+    render json: query.result(player_params)
   end
 
   # GET /players/1

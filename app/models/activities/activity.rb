@@ -1,6 +1,6 @@
 class Activity
 
-  attr_accessor :player,:project,:type,:count,:modified_record
+  attr_accessor :player,:project,:type,:count
 
   TYPES = {
     login: LoginActivity,
@@ -14,7 +14,6 @@ class Activity
     @project = args[:project]
     @type = args[:type]
     @count = args[:count] || 1
-    @modified_record = nil
   end
 
   def self.get_activity_type(player,type,project,count)

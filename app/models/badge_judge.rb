@@ -6,11 +6,10 @@ class BadgeJudge
     @player.add_observer(self)
   end
 
-  def update(args)
+  def update(activity,player_record)
     #Check the deserved badges
-    activity = args[:activity]
-    if activity
-      badges = deserved_badges(activity)
+    if activity && player_record
+      badges = deserved_badges(activity,player_record)
       issue_deserved_badges(activity.player,badges)
     end
 
@@ -29,13 +28,11 @@ class BadgeJudge
 
   end
 
-  def deserved_badges(activity)
+  def deserved_badges(activity,player_record)
+    modified_record = activity.get_record(player_record)
     badges = activity.project.badges.by_type(activity.type)
-      .less_or_equal_points_than(activity.modified_record.value)
+      .less_or_equal_points_than(modified_record.value)
   end
 
-  def record()
-
-  end
 
 end

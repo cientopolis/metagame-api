@@ -19,8 +19,8 @@ module Subject
       observers.each { |observer| @observers.delete(observer) }
     end
 
-    def notify_observers(args={})
-      observers.each { |observer| observer.update(args) }
+    def notify_observers(*args)
+      observers.each { |observer| observer.update(*args) }
     end
 
   end

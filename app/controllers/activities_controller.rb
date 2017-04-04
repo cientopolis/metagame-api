@@ -6,7 +6,11 @@ class ActivitiesController < ApplicationController
 
     if @activity && @activity.project
       player_record = @activity.player.record_activity(@activity)
-      @activity.player.save!
+      if @activity.player.save!
+        render json: {ok:"Activity recorded"}
+      else
+        render json: @activity.player.errors
+      end
     else
       raise "Project name or event type invalid"
     end

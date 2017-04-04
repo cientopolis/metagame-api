@@ -38,7 +38,7 @@ class Query
     self.query = query.order(order)
   end
 
-  def result(params, order = nil)
+  def result(params=nil, order = nil)
     add_filters(params) if params
     add_order(order) if order
     query

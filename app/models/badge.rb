@@ -7,6 +7,7 @@ class Badge < ActiveRecord::Base
 
   #Relationships
   has_many :issues
+  has_many :players, through: :issues
   belongs_to :project
 
 end

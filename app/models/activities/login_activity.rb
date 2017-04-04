@@ -5,5 +5,9 @@ class LoginActivity < Activity
     record.record_login(self)
   end
 
+  def get_record(record)
+    record.login_record
+  end
+
 
 end

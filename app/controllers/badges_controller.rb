@@ -5,7 +5,8 @@ class BadgesController < ApplicationController
   # GET /badges
   # GET /badges.json
   def index
-    render json: BadgeQuery.new.result(badge_params)
+    query = BadgeQuery.new
+    render json: query.result(req_params)
   end
 
   # GET /badges/1
@@ -55,7 +56,7 @@ class BadgesController < ApplicationController
     end
 
     def req_params
-      params.permit(:name,:project)
+      params.permit(:name,:project,:email,:type)
     end
 
     def new_badge
