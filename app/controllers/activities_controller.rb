@@ -7,12 +7,12 @@ class ActivitiesController < ApplicationController
     if @activity && @activity.project
       player_record = @activity.player.record_activity(@activity)
       if @activity.player.save!
-        render json: {ok:"Activity recorded"}
+        render json: {ok:"Activity recorded"}, status: :ok
       else
-        render json: @activity.player.errors
+        render json: {error:@activity.player.errors}, status: :conflict
       end
     else
-      raise "Project name or event type invalid"
+      render json: {error:"Project or activity type incorrect"}, status: :bad_request
     end
 
   end
