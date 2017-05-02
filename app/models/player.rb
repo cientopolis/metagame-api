@@ -51,7 +51,7 @@ class Player < ActiveRecord::Base
   end
 
   def badges_by_type(type)
-    badges.select{|b| b.badge_type = type }
+    badges.select{|b| b.badge_type == type }
   end
 
   def last_activity

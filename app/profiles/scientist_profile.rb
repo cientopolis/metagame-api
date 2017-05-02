@@ -3,7 +3,7 @@ class ScientistProfile
   include Singleton
 
   def self.all_profiles
-    [Disseminator,Generalist,Networker,Specialist]
+    [Generalist,Networker,Specialist,Disseminator]
   end
 
   def self.matches(player)

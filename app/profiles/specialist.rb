@@ -5,7 +5,7 @@ class Specialist < ScientistProfile
   end
 
   def self.matches(player)
-    player.badges_by_type("contribution").count >= 10
+    player.badges_by_type("contribution").count >= 5
   end
 
 end

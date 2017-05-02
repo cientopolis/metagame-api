@@ -5,7 +5,7 @@ class Networker < ScientistProfile
   end
 
   def self.matches(player)
-    player.badges_by_type("reinforcement").count >= 10
+    player.badges_by_type("reinforcement").count >= 5
   end
 
 end

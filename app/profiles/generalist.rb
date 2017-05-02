@@ -5,7 +5,7 @@ class Generalist < ScientistProfile
   end
 
   def self.matches(player)
-    player.projects.count >= 3
+    player.projects.count >= 5
   end
 
 end
