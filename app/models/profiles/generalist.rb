@@ -1,3 +1,0 @@
-class Generalist < ScientistProfile
-
-end

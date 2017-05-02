@@ -20,8 +20,9 @@ module MetagameApi
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
     config.autoload_paths << Rails.root.join("app/query")
-    config.autoload_paths << Rails.root.join("app/models/activities")
-    config.autoload_paths << Rails.root.join("app/models/profiles")
+    config.autoload_paths << Rails.root.join("app/activities")
+    config.autoload_paths << Rails.root.join("app/profiles")
+    config.autoload_paths << Rails.root.join("app/observers")
     config.autoload_paths << Rails.root.join("app/models/ranks")
     config.autoload_paths << Rails.root.join("app/models/records")
 
@@ -32,7 +33,9 @@ module MetagameApi
     #We populate database
     #.application.load_seed
 
-    config.active_record.raise_in_transactional_callbacks = true
+    #config.active_record.raise_in_transactional_callbacks = true
+
+
     #Rspec configs
     config.generators do |g|
       g.test_framework :rspec,

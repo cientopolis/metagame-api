@@ -10,6 +10,8 @@ gem 'mysql2'
 
 gem 'figaro'
 
+gem 'responders'
+
 group :development, :test do
   gem 'pry'
   gem 'rspec-rails'
@@ -23,7 +25,6 @@ group :test do
   gem 'launchy'
 end
 
-gem 'rails-observers'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

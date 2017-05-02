@@ -29,15 +29,15 @@ cont_badge_4 = Badge.create(name:"4 contribution",points:10,project_id:galaxy_co
 
 
 #Reinforcement badge
-cont_badge = Badge.create(name:"First reinforcement",points:10,project_id:galaxy_conqueror.id,badge_type:"reinforcement")
+reinf_badge = Badge.create(name:"First reinforcement",points:10,project_id:galaxy_conqueror.id,badge_type:"reinforcement")
 
-cont_badge = Badge.create(name:"2 reinforcement",points:30,project_id:galaxy_conqueror.id,badge_type:"reinforcement")
+reinf_badge = Badge.create(name:"2 reinforcement",points:30,project_id:galaxy_conqueror.id,badge_type:"reinforcement")
 
-cont_badge = Badge.create(name:"3 reinforcement",points:50,project_id:galaxy_conqueror.id,badge_type:"reinforcement")
+reinf_badge = Badge.create(name:"3 reinforcement",points:50,project_id:galaxy_conqueror.id,badge_type:"reinforcement")
 
 #Dissemination badges
 
-social_badge = Badge.create(name:"Share on Fb",project_id:galaxy_conqueror.id,badge_type:"dissemination")
+social_badge = Badge.create(name:"Share on Fb",points:1,project_id:galaxy_conqueror.id,badge_type:"dissemination")
 
 
 

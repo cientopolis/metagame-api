@@ -50,8 +50,22 @@ class Player < ActiveRecord::Base
     issued.map{ |i| Badge.find(i.badge_id) }
   end
 
+  def badges_by_type(type)
+    badges.select{|b| b.badge_type = type }
+  end
+
   def last_activity
     self.issues.last.created_at
+  end
+
+  #Returns the player profile
+  def profile
+    ScientistProfile.matches(self)
+  end
+
+  #Return the belonged projects of the player
+  def projects
+    badges.map{|b| b.project}.to_set
   end
 
   def record_activity(activity)

@@ -2,7 +2,9 @@ require 'rails_helper'
 
 describe "Badges Requests", type: :request do
 
-  it 'creates a badge' do
+  it 'creates a Login badge' do
+    previous_length = Badge.count
+    post '/badges',{name:"login_test",project_id:galaxy_conqueror.id,points:1,badge_type:"login"}
 
   end
 
