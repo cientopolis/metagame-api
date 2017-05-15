@@ -14,4 +14,6 @@ Rails.application.routes.draw do
 
   get '/activities' => "activities#record_activity"
 
+  get '/statistics/total_players'
+
 end

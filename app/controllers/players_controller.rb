@@ -1,12 +1,13 @@
 class PlayersController < ApplicationController
 
-  respond_to :json
+  #respond_to :json
   # GET /players
   # GET /players.json
   def index
-    query = PlayerQuery.new
-    @players = query.result(player_params)
-    render json:@players
+    @players = Player.all
+    #We filter players
+    @players = PlayerQuery.new.result(player_params) if params[:email]
+    render json: @players
   end
 
   # GET /players/1
