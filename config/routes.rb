@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root 'main#index'
 
   resources :players, except: [:new, :edit]
+  get '/player_info' => "players#player_info"
   resources :types, except: [:new, :edit]
   resources :badges, except: [:new, :edit]
 
@@ -18,6 +19,8 @@ Rails.application.routes.draw do
 
   #Statistics
   get '/statistics/total_players'
+  get '/statistics/one_time_visitors'
+  get '/statistics/boredom_dropouts'
   get '/statistics/players_distribution'
   get '/statistics/daily_activity'
 

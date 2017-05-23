@@ -26,10 +26,19 @@ class StatisticsController < ApplicationController
 
   def boredom_dropouts
     #return the total of players who doesn't have activity in the last 2 months.
+    result = PlayerRecord.where("updated_at <= ?",2.month.ago.beginning_of_month)
+              .pluck(:player_id)
+              .uniq
+              .count
+    render json: {boredom_dropouts: result }
   end
 
   def one_time_visitors
-    #return the total of players which remains as visitors in the last month.
+    #return the total of players which remains as visitors in the last 2 months.
+    result = Player.where(rank:PlayerRank.visitor)
+          .where("created_at <= ?",2.month.ago.beginning_of_month)
+          .count
+    render json: { one_time_visitors: result }
   end
 
   private
