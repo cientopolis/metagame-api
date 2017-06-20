@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170323031123) do
+ActiveRecord::Schema.define(version: 20170620031613) do
 
   create_table "activity_records", force: :cascade do |t|
     t.integer "value",            limit: 4,   default: 0
@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(version: 20170323031123) do
     t.string  "type",             limit: 255
     t.integer "player_record_id", limit: 4
   end
+
+  add_index "activity_records", ["player_record_id"], name: "fk_rails_993ca68de3", using: :btree
 
   create_table "badges", force: :cascade do |t|
     t.string   "name",        limit: 255,               null: false
@@ -30,12 +32,17 @@ ActiveRecord::Schema.define(version: 20170323031123) do
     t.datetime "updated_at",                            null: false
   end
 
+  add_index "badges", ["project_id"], name: "fk_rails_5a7c055bdc", using: :btree
+
   create_table "issues", force: :cascade do |t|
     t.integer  "player_id",  limit: 4, null: false
     t.integer  "badge_id",   limit: 4, null: false
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
   end
+
+  add_index "issues", ["badge_id"], name: "fk_rails_d20fc16ede", using: :btree
+  add_index "issues", ["player_id"], name: "fk_rails_55db581b8e", using: :btree
 
   create_table "player_ranks", force: :cascade do |t|
     t.string "name", limit: 255
@@ -49,6 +56,9 @@ ActiveRecord::Schema.define(version: 20170323031123) do
     t.datetime "updated_at",           null: false
   end
 
+  add_index "player_records", ["player_id"], name: "fk_rails_79f7ba2279", using: :btree
+  add_index "player_records", ["project_id"], name: "fk_rails_2c8790d4e4", using: :btree
+
   create_table "players", force: :cascade do |t|
     t.string   "email",          limit: 255, null: false
     t.datetime "created_at",                 null: false
@@ -57,10 +67,20 @@ ActiveRecord::Schema.define(version: 20170323031123) do
     t.integer  "player_rank_id", limit: 4
   end
 
+  add_index "players", ["email"], name: "index_players_on_email", using: :btree
+  add_index "players", ["player_rank_id"], name: "fk_rails_9fef4f8085", using: :btree
+
   create_table "projects", force: :cascade do |t|
     t.string   "name",       limit: 255, null: false
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
 
+  add_foreign_key "activity_records", "player_records"
+  add_foreign_key "badges", "projects"
+  add_foreign_key "issues", "badges"
+  add_foreign_key "issues", "players"
+  add_foreign_key "player_records", "players"
+  add_foreign_key "player_records", "projects"
+  add_foreign_key "players", "player_ranks"
 end
