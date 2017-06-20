@@ -4,7 +4,6 @@ Rails.application.routes.draw do
 
   resources :players, except: [:new, :edit]
   get '/player_info' => "players#player_info"
-  resources :types, except: [:new, :edit]
   resources :badges, except: [:new, :edit]
 
   #Player Records.
