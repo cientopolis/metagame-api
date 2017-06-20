@@ -17,14 +17,12 @@ class PlayerRecord < ActiveRecord::Base
     self.create_dissemination_record
   end
 
-
   def record_on(activity)
-    #Double dispatching
+    #Notifies all records
     activity.record_on(self.login_record)
     activity.record_on(self.contribution_record)
     activity.record_on(self.dissemination_record)
     activity.record_on(self.reinforcement_record)
-
   end
 
 end

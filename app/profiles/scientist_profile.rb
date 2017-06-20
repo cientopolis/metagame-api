@@ -1,5 +1,7 @@
 class ScientistProfile
 
+  #Each subclass has a self.name method, in case you want to change it.
+
   include Singleton
 
   def self.all_profiles
