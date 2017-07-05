@@ -22,6 +22,15 @@ $ bundle install
 4. Move to folder config/ and create a *application.yml* file following the example in application_example.yml.
 Inside the file *application.yml* you have to specify your database configuration.
 
+5. Move to the main folder of Metagame-API, and run the migrations
+
+```
+$ rake db:create
+$ rake db:migrate
+```
+
+Inside the file *application.yml* you have to specify your database configuration.
+
 5. Finally, run the API executing:
 ```
 $ rails server
