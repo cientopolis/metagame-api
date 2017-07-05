@@ -19,13 +19,15 @@ class PlayersController < ApplicationController
   def player_info
     @player = Player.find_by_email(params[:email])
     return render json:{player:{}} unless @player
-    render json: { player: {
-              email: @player.email,
-              rank: @player.rank.name,
-              profile: @player.profile.class.to_s,
-              badges: @player.badges
-              }
-            }
+
+    render json: {
+      player: {
+        email: @player.email,
+        rank: @player.rank.name,
+        profile: @player.profile.class.to_s,
+        badges: @player.badges
+        }
+      }
   end
 
   # POST /players
@@ -69,7 +71,5 @@ class PlayersController < ApplicationController
     def player_params
       params.permit(:email)
     end
-
-
 
 end

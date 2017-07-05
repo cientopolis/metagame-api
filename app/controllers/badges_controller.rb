@@ -52,7 +52,7 @@ class BadgesController < ApplicationController
     end
 
     def badge_params
-      params.permit(:id,:name,:description,:points)
+      params.permit(:id,:name,:description,:points,:project,:type)
     end
 
     def req_params

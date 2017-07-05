@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170620031613) do
+ActiveRecord::Schema.define(version: 20170626163921) do
 
   create_table "activity_records", force: :cascade do |t|
     t.integer "value",            limit: 4,   default: 0
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20170620031613) do
     t.integer  "project_id",  limit: 4,                 null: false
     t.datetime "created_at",                            null: false
     t.datetime "updated_at",                            null: false
+    t.string   "image",       limit: 255
   end
 
   add_index "badges", ["project_id"], name: "fk_rails_5a7c055bdc", using: :btree
