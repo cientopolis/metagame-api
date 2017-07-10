@@ -1,6 +1,6 @@
 class Generalist < ScientistProfile
 
-  def self.name
+  def name
     "Generalist"
   end
 

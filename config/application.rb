@@ -19,7 +19,7 @@ module MetagameApi
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
-    config.autoload_paths << Rails.root.join("app/query")
+    config.autoload_paths << Rails.root.join("app/queries")
     config.autoload_paths << Rails.root.join("app/activities")
     config.autoload_paths << Rails.root.join("app/profiles")
     config.autoload_paths << Rails.root.join("app/observers")

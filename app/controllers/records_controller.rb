@@ -32,7 +32,7 @@ class RecordsController < ApplicationController
   end
 
   def query_result
-    @query.result(req_params)
+    @query.result(req_params).all
   end
 
 end

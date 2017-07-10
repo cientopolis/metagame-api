@@ -4,9 +4,7 @@ class PlayersController < ApplicationController
   # GET /players
   # GET /players.json
   def index
-    @players = Player.all
-    #We filter players
-    @players = PlayerQuery.new.result(player_params) if params[:email]
+    @players = PlayerQuery.new.result(player_params).all
     render json: @players
   end
 
@@ -24,7 +22,7 @@ class PlayersController < ApplicationController
       player: {
         email: @player.email,
         rank: @player.rank.name,
-        profile: @player.profile.class.to_s,
+        profile: @player.profile.name,
         badges: @player.badges
         }
       }

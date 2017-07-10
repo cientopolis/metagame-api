@@ -7,7 +7,7 @@ class Player < ActiveRecord::Base
   belongs_to :rank, class_name: "PlayerRank", :foreign_key => "player_rank_id"
 
   #Validations
-  validates :email, :presence => true
+  validates :email, :presence => true, uniqueness: true
 
   include Subject
 
@@ -95,6 +95,16 @@ class Player < ActiveRecord::Base
 
   def find_record_for(project)
     self.player_records.detect{|pr| pr.project == project }
+  end
+
+
+  def as_json(options={})
+    {
+      id: id,
+      email: email,
+      created_at: created_at,
+      player_rank: rank.name,
+    }
   end
 
 end

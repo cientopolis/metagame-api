@@ -10,4 +10,7 @@ class Badge < ActiveRecord::Base
   has_many :players, through: :issues
   belongs_to :project
 
+  #Validations
+  validates :name, uniqueness: { scope: :project_id,
+    message: "Can't repeat badge name by project" }
 end
