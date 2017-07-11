@@ -1,9 +1,9 @@
 class Player < ActiveRecord::Base
 
   #Relationships
-  has_many   :issues
-  has_many   :badges, :through => :issues
-  has_many   :player_records, class_name:"PlayerRecord"
+  has_many   :issues, dependent: :destroy
+  has_many   :badges, :through => :issues, dependent: :destroy
+  has_many   :player_records, class_name:"PlayerRecord", dependent: :destroy
   belongs_to :rank, class_name: "PlayerRank", :foreign_key => "player_rank_id"
 
   #Validations

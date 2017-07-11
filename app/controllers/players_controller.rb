@@ -1,5 +1,6 @@
 class PlayersController < ApplicationController
 
+  before_action :set_player, only: [:update,:destroy,:show]
   #respond_to :json
   # GET /players
   # GET /players.json
@@ -11,7 +12,7 @@ class PlayersController < ApplicationController
   # GET /players/1
   # GET /players/1.json
   def show
-    render json: {player: @player}
+    render json: @player
   end
 
   def player_info
@@ -43,31 +44,31 @@ class PlayersController < ApplicationController
   # PATCH/PUT /players/1
   # PATCH/PUT /players/1.json
   def update
-    @player = Player.find(params[:id])
-
     if @player.update(player_params)
-      head :no_content
+      render json: @player, status: :ok
     else
-      render json: @player.errors, status: :unprocessable_entity
+      render json: {error: @player.errors}, status: :unprocessable_entity
     end
   end
 
   # DELETE /players/1
   # DELETE /players/1.json
   def destroy
-    @player.destroy
+    @player.destroy!
 
-    head :no_content
+    render json: {deleted: "Player has been deleted successfully"}
+
   end
 
   private
 
     def set_player
       @player = Player.find(params[:id])
+      raise ActiveRecord::RecordNotFound unless @player
     end
 
     def player_params
-      params.permit(:email)
+      params.permit(:email,:project)
     end
 
 end

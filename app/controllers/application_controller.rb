@@ -9,7 +9,7 @@ class ApplicationController < ActionController::API
 protected
 
   def record_not_found(exception)
-    render json: {error: exception.message}.to_json, status: 404
+    render json: {error: "Couldn't find entity. Check your params."}.to_json, status: 404
     return
   end
 

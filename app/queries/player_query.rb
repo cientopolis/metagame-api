@@ -5,5 +5,8 @@ class PlayerQuery < Query
     query.where(email:value)
   end
 
+  def add_project_filter(value)
+    query.joins(player_records: :project).where("projects.name = ?",value)
+  end
 
 end

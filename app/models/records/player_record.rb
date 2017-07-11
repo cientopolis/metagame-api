@@ -2,10 +2,10 @@ class PlayerRecord < ActiveRecord::Base
   belongs_to :player
   belongs_to :project
 
-  has_one :login_record, class_name: "LoginRecord"
-  has_one :contribution_record, class_name: "ContributionRecord"
-  has_one :reinforcement_record, class_name: "ReinforcementRecord"
-  has_one :dissemination_record, class_name: "DisseminationRecord"
+  has_one :login_record, class_name: "LoginRecord", dependent: :destroy
+  has_one :contribution_record, class_name: "ContributionRecord", dependent: :destroy
+  has_one :reinforcement_record, class_name: "ReinforcementRecord", dependent: :destroy
+  has_one :dissemination_record, class_name: "DisseminationRecord", dependent: :destroy
 
   #Initialize Records
   after_create :initialize_records

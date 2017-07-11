@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root 'main#index'
 
   resources :players, except: [:new, :edit]
+
   get '/player_info' => "players#player_info"
   resources :badges, except: [:new, :edit]
 
