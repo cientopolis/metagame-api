@@ -27,6 +27,7 @@ Inside the file *application.yml* you have to specify your database configuratio
 ```
 $ rake db:create
 $ rake db:migrate
+$ rake db:seed
 ```
 
 Inside the file *application.yml* you have to specify your database configuration.
@@ -41,6 +42,17 @@ The API will be running in port 3000. But you can change it, executing it with t
 ## Usage
 
 All the endpoints are specified in the Wiki of this project.
+
+### Security
+
+In order to use this API you will have to send the following token in your *Authorization* HTTP header:
+
+```
+Token token="tok3nexamplekjhuyq34jasn"
+```
+
+The value of the Token is inside your database, in your project table. Check your project token !
+
 
 ## Testing
 

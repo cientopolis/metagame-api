@@ -12,6 +12,8 @@ gem 'figaro'
 
 gem 'responders'
 
+gem 'rack-cors'
+
 group :development, :test do
   gem 'pry'
   gem 'rspec-rails'

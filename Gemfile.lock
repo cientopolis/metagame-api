@@ -111,6 +111,7 @@ GEM
       slop (~> 3.4)
     public_suffix (2.0.5)
     rack (1.6.5)
+    rack-cors (0.4.0)
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (4.2.5)
@@ -199,6 +200,7 @@ DEPENDENCIES
   launchy
   mysql2
   pry
+  rack-cors
   rails (= 4.2.5)
   rails-api
   responders

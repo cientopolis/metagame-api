@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170626163921) do
+ActiveRecord::Schema.define(version: 20170808004820) do
 
   create_table "activity_records", force: :cascade do |t|
     t.integer "value",            limit: 4,   default: 0
@@ -72,9 +72,10 @@ ActiveRecord::Schema.define(version: 20170626163921) do
   add_index "players", ["player_rank_id"], name: "fk_rails_9fef4f8085", using: :btree
 
   create_table "projects", force: :cascade do |t|
-    t.string   "name",       limit: 255, null: false
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.string   "name",        limit: 255, null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.string   "token_value", limit: 255
   end
 
   add_foreign_key "activity_records", "player_records"
