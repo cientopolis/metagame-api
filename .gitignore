@@ -14,10 +14,10 @@
 config/initializers/secret_token.rb
 
 # Only include if you have production secrets in this file, which is no longer a Rails default
-config/secrets.yml
+#config/secrets.yml
 
 #Database configuration
-#config/database.yml
+# config/database.yml
 
 # Ignore Byebug command history file.
 .byebug_history
