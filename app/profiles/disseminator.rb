@@ -1,6 +1,6 @@
 class Disseminator < ScientistProfile
 
-  def self.name
+  def name
     "Disseminator"
   end
 

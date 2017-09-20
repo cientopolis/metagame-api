@@ -18,7 +18,6 @@ class PlayersController < ApplicationController
   def player_info
     @player = Player.find_by_email(params[:email])
     return render json:{player:{}} unless @player
-
     render json: {
       player: {
         email: @player.email,

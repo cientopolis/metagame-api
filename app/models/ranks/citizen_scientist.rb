@@ -13,4 +13,3 @@ class CitizenScientist < PlayerRank
   end
 
 end
-
