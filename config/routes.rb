@@ -24,4 +24,7 @@ Rails.application.routes.draw do
   get '/statistics/players_distribution'
   get '/statistics/daily_activity'
 
+  # Issuing badges
+  post   '/issues' => 'issues#create'
+  delete '/issues' => 'issues#destroy'
 end

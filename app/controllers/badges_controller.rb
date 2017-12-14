@@ -63,7 +63,6 @@ class BadgesController < ApplicationController
       project = Project.find_by(name:req_params[:project])
       @new_badge = Badge.new(badge_params)
       @new_badge.project = project if project
-
     end
 
 end

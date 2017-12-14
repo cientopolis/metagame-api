@@ -11,7 +11,7 @@ class Player < ActiveRecord::Base
 
   include Subject
 
-  def initialize(args={})
+  def initialize(args = {})
     super(args)
     self.rank = PlayerRank.visitor
   end
@@ -33,7 +33,7 @@ class Player < ActiveRecord::Base
 
   def has_badge?(badge)
     #Returns true if player has the badge
-    self.badges.detect?(badge)
+    self.badges.include?(badge)
   end
 
   def has_badges?(_badges)
@@ -97,7 +97,6 @@ class Player < ActiveRecord::Base
     self.player_records.detect{|pr| pr.project == project }
   end
 
-
   def as_json(options={})
     {
       id: id,
@@ -106,5 +105,4 @@ class Player < ActiveRecord::Base
       player_rank: rank.name,
     }
   end
-
 end
